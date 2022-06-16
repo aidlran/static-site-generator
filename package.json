@@ -1,0 +1,13 @@
+{
+  "name": "static-site-generator",
+  "description": "Static site generator using Node.js.",
+  "version": "0.0.0",
+  "author": "Aidan Loughran",
+  "private": true,
+  "license": "MIT",
+  "repository": "github:aidlran/static-site-generator",
+  "bin": "./build.js",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
