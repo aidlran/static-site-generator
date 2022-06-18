@@ -9,6 +9,8 @@ const FS = {
 const BUILD_DIR = join(__dirname, 'dist');
 const PUBLIC_DIR = join(__dirname, 'public');
 
+const START_TIME = Date.now();
+
 FS.mkdir(BUILD_DIR)
 	// If exists, empty it
 	.catch(() => FS.clearDir(BUILD_DIR))
@@ -21,5 +23,5 @@ FS.mkdir(BUILD_DIR)
 	.then(build);
 
 function build() {
-
+	console.log(`Done in ${Date.now() - START_TIME}ms.`);
 }
