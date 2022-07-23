@@ -6,10 +6,21 @@ const FS = {
 	...require('./lib/filesystem.js')
 };
 
-const BUILD_DIR = join(__dirname, 'dist');
-const PUBLIC_DIR = join(__dirname, 'public');
+let workingDir = '.';
+
+const BUILD_DIR = join(workingDir, 'dist');
+const PUBLIC_DIR = join(workingDir, 'public');
 
 const START_TIME = Date.now();
+
+let oneArgument = false;
+
+// Parse arguments
+for (let i = 2; i < process.argv.length; i++) {
+	if (process.argv[i].startsWith('-')) continue;
+	else if (oneArgument) throw Error("Too many arguments.");
+	else (workingDir = process.argv[i]) && (oneArgument = true);
+}
 
 FS.mkdir(BUILD_DIR)
 	// If exists, empty it
