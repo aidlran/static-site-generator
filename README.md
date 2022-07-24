@@ -8,6 +8,13 @@ Not a lot so far:
 
 - A `dist` directory is created in the working directory, the website is built here.
 - Files are recursively hardlinked from `public`.
+- Files with [supported extensions](#supported-languages) are recursively rendered from `pages`.
+
+## Supported Languages
+
+**Template languages:**
+
+- [EJS](https://www.npmjs.com/package/ejs) (`*.ejs`)
 
 ## Installation
 

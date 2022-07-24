@@ -10,6 +10,7 @@ let workingDir = '.';
 
 const BUILD_DIR = join(workingDir, 'dist');
 const PUBLIC_DIR = join(workingDir, 'public');
+const PAGES_DIR = join(workingDir, 'pages');
 
 const START_TIME = Date.now();
 
@@ -34,8 +35,12 @@ FS.mkdir(BUILD_DIR)
 
 	// Link contents of `public` dir if present
 	.then(() => FS.exists(PUBLIC_DIR)).then(exists => {
-	if (exists) return FS.linkDirStructure(PUBLIC_DIR, BUILD_DIR);
-})
+		if (exists) return FS.linkDirStructure(PUBLIC_DIR, BUILD_DIR);
+	})
+
+	.then(() => FS.exists(PAGES_DIR)).then(exists => {
+		if (exists) return FS.renderDirStructure(PAGES_DIR, BUILD_DIR);
+	})
 
 	.then(build);
 

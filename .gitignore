@@ -4,3 +4,4 @@ node_modules/
 # Build testing
 dist/
 public/
+pages/

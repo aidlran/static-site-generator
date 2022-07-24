@@ -9,5 +9,8 @@
   "bin": "bin/index.js",
   "scripts": {
     "build": "node bin/index.js build"
+  },
+  "devDependencies": {
+    "ejs": "3.1.8"
   }
 }
