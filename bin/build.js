@@ -3,7 +3,7 @@
 const {join} = require('path');
 const FS = {
 	...require('fs/promises'),
-	...require('./lib/filesystem.js')
+	...require('../lib/filesystem.js')
 };
 
 let workingDir = '.';
@@ -16,10 +16,16 @@ const START_TIME = Date.now();
 let oneArgument = false;
 
 // Parse arguments
-for (let i = 2; i < process.argv.length; i++) {
+for (let i = 3; i < process.argv.length; i++) {
 	if (process.argv[i].startsWith('-')) continue;
-	else if (oneArgument) throw Error("Too many arguments.");
-	else (workingDir = process.argv[i]) && (oneArgument = true);
+	else if (oneArgument) {
+		console.log("Build command format: static-site-generator build [OPTIONS] DIR");
+		process.exit(1);
+	}
+	else {
+		workingDir = process.argv[i];
+		oneArgument = true;
+	}
 }
 
 FS.mkdir(BUILD_DIR)
@@ -28,8 +34,8 @@ FS.mkdir(BUILD_DIR)
 
 	// Link contents of `public` dir if present
 	.then(() => FS.exists(PUBLIC_DIR)).then(exists => {
-		if (exists) return FS.linkDirStructure(PUBLIC_DIR, BUILD_DIR);
-	})
+	if (exists) return FS.linkDirStructure(PUBLIC_DIR, BUILD_DIR);
+})
 
 	.then(build);
 

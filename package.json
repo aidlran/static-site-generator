@@ -6,8 +6,8 @@
   "private": true,
   "license": "MIT",
   "repository": "github:aidlran/static-site-generator",
-  "bin": "./build.js",
+  "bin": "bin/index.js",
   "scripts": {
-    "build": "node build.js"
+    "build": "node bin/index.js build"
   }
 }

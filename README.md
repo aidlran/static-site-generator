@@ -6,7 +6,8 @@ This is a static site generator using Node.js and taking advantage of the NPM mo
 
 Not a lot so far:
 
-- Recursively hardlinks the files in `public` to `dist`.
+- A `dist` directory is created in the working directory, the website is built here.
+- Files are recursively hardlinked from `public`.
 
 ## Installation
 
@@ -17,7 +18,7 @@ npm i github:aidlran/static-site-generator
 ## Usage
 
 ```sh
-static-site-generator [directory]
+static-site-generator build [OPTIONS] DIR
 ```
 
 By default, if no directory is specified, it will use the current working directory (i.e.: `./`). 
